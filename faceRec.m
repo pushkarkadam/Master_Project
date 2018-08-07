@@ -18,20 +18,21 @@ layers = [
     softmaxLayer
     classificationLayer];
 
-%% Train Network
+%% Training parameters
 options = trainingOptions('sgdm',...
     'MiniBatchSize',10, ...
-    'MaxEpochs',6, ...
+    'MaxEpochs',10, ...
     'InitialLearnRate',1e-4, ...
     'Verbose',true, ...
     'Shuffle','once');
 
-faceNet = trainNetwork(imdsTrain, layers, options);
+%% Train network
+newNet = trainNetwork(imdsTrain, layers, options);
 
 %% Save trained CNN
-save faceNet
+save newNet
 
 %% Classify Validation Images
 
-YPred = classify(faceNet, imdsValidation);
+YPred = classify(newNet, imdsValidation);
 accuracy = mean(YPred == imdsValidation.Labels)
