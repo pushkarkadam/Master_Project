@@ -1,6 +1,6 @@
 faceDetector = vision.CascadeObjectDetector();
 
-load faceNet;
+load newNet;
 
 pause(3)
 cam = webcam();
@@ -27,7 +27,7 @@ while runloop && frameCount < 50
 
             tempImage = imresize(tempImage, [227 227]);
 
-            name = classify(faceNet, tempImage);
+            name = classify(newNet, tempImage);
 
             name = char(name);
             
