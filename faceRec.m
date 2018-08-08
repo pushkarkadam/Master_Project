@@ -5,6 +5,9 @@ imds = imageDatastore('Face_Data',...
 
 [imdsTrain, imdsValidation] = splitEachLabel(imds,0.7,'randomized');
 
+%% Check image dimensions agree with all images
+imageDimensionCheck(imdsTrain,imdsValidation);
+
 %% Load Pretrained Network
 net = alexnet;
 
