@@ -11,6 +11,7 @@ net = alexnet;
 
 %% Replace final layers
 layersTransfer = net.Layers(1:end-3);
+
 numClasses = numel(categories(imdsTrain.Labels));
 layers = [
     layersTransfer
